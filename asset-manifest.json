@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.css": "/calorie-calculator/static/css/main.31d6cfe0.css",
+    "main.js": "/calorie-calculator/static/js/main.e1d436e5.js",
+    "index.html": "/calorie-calculator/index.html",
+    "main.e1d436e5.js.map": "/calorie-calculator/static/js/main.e1d436e5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.e1d436e5.js"
+  ]
+}
