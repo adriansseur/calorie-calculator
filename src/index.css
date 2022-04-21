@@ -14,30 +14,22 @@ body {
 }
 
 #paper {
-    padding: 2rem;
+    padding: 3rem;
 }
 
-.age-wrapper {
-    display: flex;
+#title {
+    grid-column: 1 / -1;
 }
 
-#gender-form {
-    flex-direction: row;
+#form {
+    display: grid;
+    grid-template: repeat(7, auto) / auto 2fr;
     align-items: center;
+    row-gap: 1rem;
+    column-gap: 2rem;
 }
 
-#age-label,
-#gender-label,
-#height-label,
-#weight-label,
-#activity-label {
-    margin-right: 1rem;
-}
-
-.age-wrapper,
-.height-wrapper,
-.weight-wrapper,
-.activity-wrapper {
-    display: flex;
-    align-items: center;
+#calculate {
+    grid-column: 1 / -1;
+    height: 3.5rem;
 }
