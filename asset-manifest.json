@@ -1,14 +1,22 @@
 {
   "files": {
-    "main.css": "/calorie-calculator/static/css/main.34165b16.css",
-    "main.js": "/calorie-calculator/static/js/main.6b7afcb7.js",
+    "main.css": "/calorie-calculator/static/css/main.f51f9ac5.css",
+    "main.js": "/calorie-calculator/static/js/main.12ff5c15.js",
+    "static/media/roboto-all-400-normal.woff": "/calorie-calculator/static/media/roboto-all-400-normal.376ea5d93f71583052f6.woff",
     "service-worker.js": "/calorie-calculator/service-worker.js",
+    "static/media/roboto-latin-400-normal.woff2": "/calorie-calculator/static/media/roboto-latin-400-normal.4673b4537a84c7f7a130.woff2",
+    "static/media/roboto-cyrillic-ext-400-normal.woff2": "/calorie-calculator/static/media/roboto-cyrillic-ext-400-normal.493afe7ae8ecfe268800.woff2",
+    "static/media/roboto-latin-ext-400-normal.woff2": "/calorie-calculator/static/media/roboto-latin-ext-400-normal.c3dcdbd5bb4d4af80817.woff2",
+    "static/media/roboto-cyrillic-400-normal.woff2": "/calorie-calculator/static/media/roboto-cyrillic-400-normal.5e493812deabd1d01e60.woff2",
+    "static/media/roboto-greek-400-normal.woff2": "/calorie-calculator/static/media/roboto-greek-400-normal.1cbfc636c911faa4d0ca.woff2",
+    "static/media/roboto-vietnamese-400-normal.woff2": "/calorie-calculator/static/media/roboto-vietnamese-400-normal.c0bec65d01f776c00c91.woff2",
+    "static/media/roboto-greek-ext-400-normal.woff2": "/calorie-calculator/static/media/roboto-greek-ext-400-normal.bb723e8458c9c653e505.woff2",
     "index.html": "/calorie-calculator/index.html",
-    "main.34165b16.css.map": "/calorie-calculator/static/css/main.34165b16.css.map",
-    "main.6b7afcb7.js.map": "/calorie-calculator/static/js/main.6b7afcb7.js.map"
+    "main.f51f9ac5.css.map": "/calorie-calculator/static/css/main.f51f9ac5.css.map",
+    "main.12ff5c15.js.map": "/calorie-calculator/static/js/main.12ff5c15.js.map"
   },
   "entrypoints": [
-    "static/css/main.34165b16.css",
-    "static/js/main.6b7afcb7.js"
+    "static/css/main.f51f9ac5.css",
+    "static/js/main.12ff5c15.js"
   ]
 }
