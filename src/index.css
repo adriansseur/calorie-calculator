@@ -1,0 +1,43 @@
+* {
+    font-size: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgb(166, 166, 166), rgb(234, 234, 234));
+}
+
+#paper {
+    padding: 2rem;
+}
+
+.age-wrapper {
+    display: flex;
+}
+
+#gender-form {
+    flex-direction: row;
+    align-items: center;
+}
+
+#age-label,
+#gender-label,
+#height-label,
+#weight-label,
+#activity-label {
+    margin-right: 1rem;
+}
+
+.age-wrapper,
+.height-wrapper,
+.weight-wrapper,
+.activity-wrapper {
+    display: flex;
+    align-items: center;
+}
