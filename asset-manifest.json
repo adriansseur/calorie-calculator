@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/calorie-calculator/static/css/main.f51f9ac5.css",
-    "main.js": "/calorie-calculator/static/js/main.12ff5c15.js",
+    "main.js": "/calorie-calculator/static/js/main.bd78251e.js",
     "static/media/roboto-all-400-normal.woff": "/calorie-calculator/static/media/roboto-all-400-normal.376ea5d93f71583052f6.woff",
     "service-worker.js": "/calorie-calculator/service-worker.js",
     "static/media/roboto-latin-400-normal.woff2": "/calorie-calculator/static/media/roboto-latin-400-normal.4673b4537a84c7f7a130.woff2",
@@ -13,10 +13,10 @@
     "static/media/roboto-greek-ext-400-normal.woff2": "/calorie-calculator/static/media/roboto-greek-ext-400-normal.bb723e8458c9c653e505.woff2",
     "index.html": "/calorie-calculator/index.html",
     "main.f51f9ac5.css.map": "/calorie-calculator/static/css/main.f51f9ac5.css.map",
-    "main.12ff5c15.js.map": "/calorie-calculator/static/js/main.12ff5c15.js.map"
+    "main.bd78251e.js.map": "/calorie-calculator/static/js/main.bd78251e.js.map"
   },
   "entrypoints": [
     "static/css/main.f51f9ac5.css",
-    "static/js/main.12ff5c15.js"
+    "static/js/main.bd78251e.js"
   ]
 }
