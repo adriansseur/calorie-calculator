@@ -23,6 +23,17 @@ function App() {
 
   function calculate() {
     console.log(formValues)
+    const { age, gender, feet, inches, pounds, activity } = formValues
+    const weight = parseFloat(pounds) * 0.453592
+    const height = ((parseFloat(feet)*12) + parseFloat(inches))*2.54
+    console.log(mifflinStJeorEq(weight, height, age, gender, activity))
+  }
+
+  function mifflinStJeorEq(weight, height, age, gender, activity) {
+    const maintainWeightCalories = gender === "male" ?
+      ((10 * weight) + (6.25 * height) - (5 * age) + 5) * activity :
+      ((10 * weight) + (6.25 * height) - (5 * age) - 161) * activity
+    return Math.round(maintainWeightCalories)
   }
 
   return (
