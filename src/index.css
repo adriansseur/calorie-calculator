@@ -13,8 +13,9 @@ body {
     background: linear-gradient(rgb(166, 166, 166), rgb(234, 234, 234));
 }
 
-#paper {
+.paper {
     padding: 3rem;
+    /* opacity: 0.5; */
 }
 
 #title {
@@ -36,4 +37,12 @@ body {
 #calculate {
     grid-column: 1 / -1;
     height: 3.5rem;
+}
+
+.hidden {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -100;
 }

@@ -1,17 +1,26 @@
 import React from 'react';
 import { Paper, TextField, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, InputLabel, Select, MenuItem, Button, Typography } from '@mui/material'
 import CalculateIcon from '@mui/icons-material/Calculate';
+import foodBowl from "./media/food_bowl.png"
 
 
 function App() {
+  const [calories, setCalories] = React.useState({
+    maintainWeight: undefined
+  })
+
   const [formValues, setFormValues] = React.useState({
-    age: undefined,
-    gender: undefined,
-    feet: undefined,
-    inches: undefined,
-    pounds: undefined,
+    age: "",
+    gender: "",
+    feet: "",
+    inches: "",
+    pounds: "",
     activity: "1.20"
   })
+  
+  const [resetMode, setResetMode] = React.useState(false)
+
+  const results = React.useRef()
 
   function handleInputChange(e) {
     const { name, value } = e.target
@@ -22,11 +31,29 @@ function App() {
   }
 
   function calculate() {
-    console.log(formValues)
     const { age, gender, feet, inches, pounds, activity } = formValues
     const weight = parseFloat(pounds) * 0.453592
-    const height = ((parseFloat(feet)*12) + parseFloat(inches))*2.54
-    console.log(mifflinStJeorEq(weight, height, age, gender, activity))
+    const height = ((parseFloat(feet) * 12) + parseFloat(inches)) * 2.54
+    const maintainWeightCalories = mifflinStJeorEq(weight, height, age, gender, activity)
+    setCalories({
+      maintainWeight: maintainWeightCalories
+    })
+    results.current.classList.toggle("hidden")
+    setResetMode(true)
+  }
+
+  function reset() {
+    setResetMode(false)
+    results.current.classList.toggle("hidden")
+    setFormValues({
+      age: "",
+      gender: "",
+      feet: "",
+      inches: "",
+      pounds: "",
+      activity: "1.20"
+    })
+    // console.log(formValues)
   }
 
   function mifflinStJeorEq(weight, height, age, gender, activity) {
@@ -38,14 +65,14 @@ function App() {
 
   return (
     <div className="app">
-      <Paper elevation={24} id="paper">
+      <Paper elevation={24} className="paper">
         <form id="form">
           <Typography id="title" variant='h3'>
             Calorie Calculator
           </Typography>
           {/* Age */}
           <FormLabel id="age-label">Age</FormLabel>
-          <TextField id="age-input" label="age" helperText="Ages 15-80" onChange={handleInputChange} name="age" />
+          <TextField id="age-input" label="age" helperText="Ages 15-80" onChange={handleInputChange} name="age" value={formValues.age}/>
           {/* Gender */}
           <FormLabel id="gender-label">Gender</FormLabel>
           <FormControl id="gender-form">
@@ -54,6 +81,7 @@ function App() {
               name="gender"
               row
               onChange={handleInputChange}
+              value={formValues.gender}
             >
               <FormControlLabel value="male" control={<Radio />} label="Male" />
               <FormControlLabel value="female" control={<Radio />} label="Female" />
@@ -62,12 +90,12 @@ function App() {
           {/* Height */}
           <FormLabel id="height-label">Height</FormLabel>
           <div className="height-inputs">
-            <TextField id="input-feet" label="feet" onChange={handleInputChange} name="feet" />
-            <TextField id="input-inches" label="inches" onChange={handleInputChange} name="inches" />
+            <TextField id="input-feet" label="feet" onChange={handleInputChange} name="feet" value={formValues.feet} />
+            <TextField id="input-inches" label="inches" onChange={handleInputChange} name="inches" value={formValues.inches}/>
           </div>
           {/* Weight */}
           <FormLabel id="weight-label">Weight</FormLabel>
-          <TextField id="weight-input" label="pounds" onChange={handleInputChange} name="pounds" />
+          <TextField id="weight-input" label="pounds" onChange={handleInputChange} name="pounds" value={formValues.pounds}/>
           {/* Activity */}
           <FormLabel id="activity-label">Activity</FormLabel>
           <FormControl fullWidth>
@@ -79,6 +107,7 @@ function App() {
               label="select activity level"
               onChange={handleInputChange}
               name="activity"
+              // value={formValues.activity}
             >
               <MenuItem value={"1.00"}>BMR</MenuItem>
               <MenuItem value={"1.20"}>Sedentary</MenuItem>
@@ -89,11 +118,18 @@ function App() {
               <MenuItem value={"1.90"}>Extra Active</MenuItem>
             </Select>
           </FormControl>
-          <Button id="calculate" variant="contained" endIcon={<CalculateIcon />} onClick={calculate}>
-            Calculate
-          </Button>
+          {resetMode ?
+            <Button id="calculate" variant="contained" onClick={reset}>Reset</Button> :
+            <Button id="calculate" variant="contained" endIcon={<CalculateIcon />} onClick={calculate}>Calculate</Button>
+          }
         </form>
       </Paper>
+      <div className='hidden' ref={results}>
+        <Paper className='paper' elevation={4}>
+          <img src={foodBowl} alt="a food bowl" width="200px" />
+          <Typography variant="h5">Calories: {calories.maintainWeight}</Typography>
+        </Paper>
+      </div>
     </div>
   );
 }
