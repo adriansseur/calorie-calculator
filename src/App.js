@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Paper, TextField, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, InputLabel, Select, MenuItem, Button, Typography } from '@mui/material'
 import CalculateIcon from '@mui/icons-material/Calculate';
 import foodBowl from "./media/food_bowl.png"
+import { ValidationContext } from './validationContext';
 
 
 function App() {
+  const { validateInput, inputErrors } = useContext(ValidationContext)
   const [calories, setCalories] = React.useState({
     maintainWeight: undefined
   })
@@ -24,6 +26,8 @@ function App() {
 
   function handleInputChange(e) {
     const { name, value } = e.target
+    // validation
+    validateInput(name, value)
     setFormValues({
       ...formValues,
       [name]: value
@@ -72,7 +76,7 @@ function App() {
           </Typography>
           {/* Age */}
           <FormLabel id="age-label">Age</FormLabel>
-          <TextField id="age-input" label="age" helperText="Ages 15-80" onChange={handleInputChange} name="age" value={formValues.age}/>
+          <TextField id="age-input" label="age" helperText="Ages 15-80" onChange={handleInputChange} name="age" value={formValues.age} error={inputErrors.age} />
           {/* Gender */}
           <FormLabel id="gender-label">Gender</FormLabel>
           <FormControl id="gender-form">
@@ -90,12 +94,12 @@ function App() {
           {/* Height */}
           <FormLabel id="height-label">Height</FormLabel>
           <div className="height-inputs">
-            <TextField id="input-feet" label="feet" onChange={handleInputChange} name="feet" value={formValues.feet} />
-            <TextField id="input-inches" label="inches" onChange={handleInputChange} name="inches" value={formValues.inches}/>
+            <TextField id="input-feet" label="feet" onChange={handleInputChange} name="feet" value={formValues.feet} error={inputErrors.feet} />
+            <TextField id="input-inches" label="inches" onChange={handleInputChange} name="inches" value={formValues.inches} error={inputErrors.inches} />
           </div>
           {/* Weight */}
           <FormLabel id="weight-label">Weight</FormLabel>
-          <TextField id="weight-input" label="pounds" onChange={handleInputChange} name="pounds" value={formValues.pounds}/>
+          <TextField id="weight-input" label="pounds" onChange={handleInputChange} name="pounds" value={formValues.pounds} error={inputErrors.pounds} />
           {/* Activity */}
           <FormLabel id="activity-label">Activity</FormLabel>
           <FormControl fullWidth>
