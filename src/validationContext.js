@@ -20,6 +20,27 @@ function ValidationContextProvider(props) {
                         false :
                         true
                 })
+            case "feet":
+                setInputErrors({
+                    ...inputErrors,
+                    [name]: (value.split("").every((i) => (0 <= i && i <= 9)) && value <= 10) || value === "" ?
+                        false :
+                        true
+                })
+            case "inches":
+                setInputErrors({
+                    ...inputErrors,
+                    [name]: (value.split("").every((i) => (0 <= i && i <= 9)) && value <= 12) || value === "" ?
+                        false :
+                        true
+                })
+            case "pounds":
+                setInputErrors({
+                    ...inputErrors,
+                    [name]: value.split("").every((i) => (0 <= i && i <= 9)) || value === "" ?
+                        false :
+                        true
+                })
         }
         
     }

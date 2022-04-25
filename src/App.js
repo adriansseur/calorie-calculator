@@ -13,7 +13,7 @@ function App() {
 
   const [formValues, setFormValues] = React.useState({
     age: "",
-    gender: "",
+    gender: "male",
     feet: "",
     inches: "",
     pounds: "",
@@ -57,7 +57,6 @@ function App() {
       pounds: "",
       activity: "1.20"
     })
-    // console.log(formValues)
   }
 
   function mifflinStJeorEq(weight, height, age, gender, activity) {
