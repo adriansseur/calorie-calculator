@@ -5,48 +5,76 @@ const ValidationContext = React.createContext()
 function ValidationContextProvider(props) {
 
     const [inputErrors, setInputErrors] = React.useState({
-        age: false,
-        feet: false,
-        inches: false,
-        pounds: false
+        ageError: false,
+        feetError: false,
+        inchesError: false,
+        poundsError: false
     })
 
     function validateInput(name, value) {
-        switch (name) {
-            case "age":
-                setInputErrors({
-                    ...inputErrors,
-                    [name]: (value.split("").every((i) => (0 <= i && i <= 9)) && value >= 15 && value <= 80) || value === "" ?
-                        false :
-                        true
-                })
-            case "feet":
-                setInputErrors({
-                    ...inputErrors,
-                    [name]: (value.split("").every((i) => (0 <= i && i <= 9)) && value <= 10) || value === "" ?
-                        false :
-                        true
-                })
-            case "inches":
-                setInputErrors({
-                    ...inputErrors,
-                    [name]: (value.split("").every((i) => (0 <= i && i <= 9)) && value <= 12) || value === "" ?
-                        false :
-                        true
-                })
-            case "pounds":
-                setInputErrors({
-                    ...inputErrors,
-                    [name]: value.split("").every((i) => (0 <= i && i <= 9)) || value === "" ?
-                        false :
-                        true
-                })
+        if (name === "age") {
+            setInputErrors(prev => ({
+                ...prev,
+                ageError: (value.split("").every((i) => (0 <= i && i <= 9)) && value >= 15 && value <= 80) || value === "" ?
+                    false :
+                    true
+            }))
         }
-        
+        if (name === "feet") {
+            setInputErrors(prev => ({
+                ...prev,
+                feetError: (value.split("").every((i) => (0 <= i && i <= 9)) && value <= 10) || value === "" ?
+                    false :
+                    true
+            }))
+        }
+        if (name === "inches") {
+            setInputErrors(prev => ({
+                ...prev,
+                inchesError: (value.split("").every((i) => (0 <= i && i <= 9)) && value <= 12) || value === "" ?
+                    false :
+                    true
+            }))
+        }
+        if (name === "pounds") {
+            setInputErrors(prev => ({
+                ...prev,
+                poundsError: value.split("").every((i) => (0 <= i && i <= 9)) || value === "" ?
+                    false :
+                    true
+            }))
+        }
     }
+
+    function showUnfilledInputs(age, feet, inches, pounds) {
+        if (age === "") {
+          setInputErrors(prev => ({
+            ...prev,
+            ageError: true
+          }))
+        }
+        if (feet === "") {
+          setInputErrors(prev => ({
+            ...prev,
+            feetError: true
+          }))
+        }
+        if (inches === "") {
+          setInputErrors(prev => ({
+            ...prev,
+            inchesError: true
+          }))
+        }
+        if (pounds === "") {
+          setInputErrors(prev => ({
+            ...prev,
+            poundsError: true
+          }))
+        }
+      }
     
     return (
-        <ValidationContext.Provider value={{inputErrors, validateInput}} >
+        <ValidationContext.Provider value={{inputErrors, validateInput, showUnfilledInputs}} >
             {props.children}
         </ValidationContext.Provider>
     )

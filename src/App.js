@@ -6,7 +6,7 @@ import { ValidationContext } from './validationContext';
 
 
 function App() {
-  const { validateInput, inputErrors } = useContext(ValidationContext)
+  const { inputErrors, validateInput, showUnfilledInputs } = useContext(ValidationContext)
   const [calories, setCalories] = React.useState({
     maintainWeight: undefined
   })
@@ -26,24 +26,29 @@ function App() {
 
   function handleInputChange(e) {
     const { name, value } = e.target
-    // validation
-    validateInput(name, value)
     setFormValues({
       ...formValues,
       [name]: value
     })
+    validateInput(name, value)
   }
 
   function calculate() {
+    const { ageError, feetError, inchesError, poundsError } = inputErrors
     const { age, gender, feet, inches, pounds, activity } = formValues
-    const weight = parseFloat(pounds) * 0.453592
-    const height = ((parseFloat(feet) * 12) + parseFloat(inches)) * 2.54
-    const maintainWeightCalories = mifflinStJeorEq(weight, height, age, gender, activity)
-    setCalories({
-      maintainWeight: maintainWeightCalories
-    })
-    results.current.classList.toggle("hidden")
-    setResetMode(true)
+    const formValuesArray = [age, feet, inches, pounds]
+    if ((!ageError && !feetError && !inchesError && !poundsError) &&
+    formValuesArray.every((i) => i !== "")) {
+      const weight = parseFloat(pounds) * 0.453592
+      const height = ((parseFloat(feet) * 12) + parseFloat(inches)) * 2.54
+      const maintainWeightCalories = mifflinStJeorEq(weight, height, age, gender, activity)
+      setCalories({
+        maintainWeight: maintainWeightCalories
+      })
+      results.current.classList.toggle("hidden")
+      setResetMode(true)
+    }
+    showUnfilledInputs(age, feet, inches, pounds)
   }
 
   function reset() {
@@ -75,7 +80,7 @@ function App() {
           </Typography>
           {/* Age */}
           <FormLabel id="age-label">Age</FormLabel>
-          <TextField id="age-input" label="age" helperText="Ages 15-80" onChange={handleInputChange} name="age" value={formValues.age} error={inputErrors.age} />
+          <TextField id="age-input" label="age" helperText="Ages 15-80" onChange={handleInputChange} name="age" value={formValues.age} error={inputErrors.ageError} />
           {/* Gender */}
           <FormLabel id="gender-label">Gender</FormLabel>
           <FormControl id="gender-form">
@@ -93,12 +98,12 @@ function App() {
           {/* Height */}
           <FormLabel id="height-label">Height</FormLabel>
           <div className="height-inputs">
-            <TextField id="input-feet" label="feet" onChange={handleInputChange} name="feet" value={formValues.feet} error={inputErrors.feet} />
-            <TextField id="input-inches" label="inches" onChange={handleInputChange} name="inches" value={formValues.inches} error={inputErrors.inches} />
+            <TextField id="input-feet" label="feet" onChange={handleInputChange} name="feet" value={formValues.feet} error={inputErrors.feetError} />
+            <TextField id="input-inches" label="inches" onChange={handleInputChange} name="inches" value={formValues.inches} error={inputErrors.inchesError} />
           </div>
           {/* Weight */}
           <FormLabel id="weight-label">Weight</FormLabel>
-          <TextField id="weight-input" label="pounds" onChange={handleInputChange} name="pounds" value={formValues.pounds} error={inputErrors.pounds} />
+          <TextField id="weight-input" label="pounds" onChange={handleInputChange} name="pounds" value={formValues.pounds} error={inputErrors.poundsError} />
           {/* Activity */}
           <FormLabel id="activity-label">Activity</FormLabel>
           <FormControl fullWidth>
