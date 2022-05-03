@@ -134,7 +134,7 @@ function App() {
       </Paper>
       <div className='hidden' ref={results}>
         <Paper className='paper' elevation={4}>
-          <img src={foodBowl} alt="a food bowl" width="200px" />
+          {/* <img src={foodBowl} alt="a food bowl" width="200px" /> */}
           <Typography variant="h5">Calories: {calories.maintainWeight}</Typography>
         </Paper>
       </div>
