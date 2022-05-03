@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/calorie-calculator/static/css/main.f3341959.css",
-    "main.js": "/calorie-calculator/static/js/main.8e0b391d.js",
+    "main.js": "/calorie-calculator/static/js/main.307de9f9.js",
     "static/media/food_bowl.png": "/calorie-calculator/static/media/food_bowl.9959c9bcf7c2209a743f.png",
     "static/media/roboto-all-400-normal.woff": "/calorie-calculator/static/media/roboto-all-400-normal.376ea5d93f71583052f6.woff",
     "service-worker.js": "/calorie-calculator/service-worker.js",
@@ -14,10 +14,10 @@
     "static/media/roboto-greek-ext-400-normal.woff2": "/calorie-calculator/static/media/roboto-greek-ext-400-normal.bb723e8458c9c653e505.woff2",
     "index.html": "/calorie-calculator/index.html",
     "main.f3341959.css.map": "/calorie-calculator/static/css/main.f3341959.css.map",
-    "main.8e0b391d.js.map": "/calorie-calculator/static/js/main.8e0b391d.js.map"
+    "main.307de9f9.js.map": "/calorie-calculator/static/js/main.307de9f9.js.map"
   },
   "entrypoints": [
     "static/css/main.f3341959.css",
-    "static/js/main.8e0b391d.js"
+    "static/js/main.307de9f9.js"
   ]
 }
